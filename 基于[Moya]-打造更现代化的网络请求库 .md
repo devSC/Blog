@@ -1,14 +1,12 @@
-基于[Moya]-打造更现代化的网络请求库
-
 最近新项目开始尝试 Swift 混编，而我负责搭建底层库。在调研了很多开源的网络库后，最后选择了 Moya，本片文章也是对 Moya 使用过程的一个总结。
 
-#Moya 是什么？
+# Moya 是什么？
 [Moya](https://github.com/Moya/Moya) 是一个开源的网络请求库，它底层封装了`Alamofire`，对外提供简单易用的网络请求的接口。
 
-#为什么选择 Moya？
+# 为什么选择 Moya？
 大家都知道在 Swift 2.0版本发布的时候，官方当时在[Protocol-Oriented Programming in Swift](https://developer.apple.com/videos/play/wwdc2015/408/) 中就向广大小伙伴们推荐在 Swift 中面向 POP 编程。而让我选择 Moya 的最大原因也是其：**面向 POP 编程**。至于 POP、OOP 编程的优缺点可以看喵大的[这篇文章](https://onevcat.com/2016/11/pop-cocoa-1/)和[这篇文章](https://onevcat.com/2016/12/pop-cocoa-2//)，文章里已经分析的很清晰了，我在此简述一下。
 
-###面向 POP 解决了面向 OOP 编程的那些问题？
+### 面向 POP 解决了面向 OOP 编程的那些问题？
 
 * 横切关注点
 * 多继承的菱形依赖
@@ -19,7 +17,7 @@
 * 定义 ApiManager 类
 * 调用
 
-###定义接口
+### 定义接口
 
 ```swift
 public enum Game {
@@ -106,7 +104,7 @@ extension Game: TargetType {
 
 9：可以添加自定义的请求头参数。
 
-###定义 `ApiManager`
+### 定义 `ApiManager`
 
 ```swift
 class GameAPIManager {    
@@ -145,7 +143,7 @@ class GameAPIManager {
 
 2：定义请求方法.
 
-###调用
+### 调用
 ```swift
 GameAPIManager.request(.sticker, success: { (response) in
     print("response: \(response)")
@@ -204,7 +202,7 @@ extension URLRequest {
 
 2：向最终的请求中添加额外参数。
 
-###验证 SSL 自签名证书
+### 验证 SSL 自签名证书
 由于 Moya 底层封装的是 Alamofire, 所以验证自签名证书这里要用到 Alamofire 库。
 
 ```swift
@@ -294,7 +292,7 @@ class GameAPIManager {
 
 上面代码中，`PKCS12Import`是抽象出的一个管理客户端 p12 证书文件并返回 `URLCredential` 的小工具类可以在 [Demo](https://github.com/devSC/Moya-demo) 中查看其源码。
 
-#总结
+# 总结
 Moya 的使用就是这么简单，就像其文档中第一句话中写的：*Moya is about working at high levels of abstraction in your application.* 是的，它尽可能的对底层进行了封装，但又不失我们对底层操作的灵活性，完美发挥了 POP 的威力。
 
 可以在[这里](https://github.com/devSC/Moya-demo)查看示例代码。
