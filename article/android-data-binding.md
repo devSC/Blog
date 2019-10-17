@@ -54,16 +54,15 @@ public class PrivateUser extends BaseObservable{
 
 可自定义实现XML属性中View属性的set方法。
 
-### BindingConversion
+### `BindingConversion`
 
 类型转换用
 
 编译器会自动匹配方法
 
-### BindingMethods & BindingMethod
+### `BindingMethods` & `BindingMethod`
 
-
-重新命名view属性对应的setter方法名称
+重新命名`view`属性对应的`setter`方法名称
 
 注解参数中指定三个关键值，分别是：
 
